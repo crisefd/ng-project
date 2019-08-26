@@ -4,7 +4,9 @@ import { Component, OnChanges, OnInit,
          AfterViewInit,
          AfterViewChecked, OnDestroy, Input, SimpleChanges } from '@angular/core';
 
-import { DummyService } from '../../providers';
+import { DummyService, RequestService } from '../../providers';
+
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-example',
@@ -17,14 +19,20 @@ export class ExampleComponent implements OnChanges, OnInit,
                                          AfterViewChecked, OnDestroy {
   @Input() someInput?: string;
 
-  constructor(protected dummy: DummyService) { }
+
+  public data = [];
+
+  constructor(protected dummy: DummyService, public requestService: RequestService) { }
 
   ngOnChanges = (changes: SimpleChanges) => {
     console.log("OnChanges");
     console.log(changes);
   }
 
-  ngOnInit = () => {
+  ngOnInit() {
+    this.getData().subscribe( res => {
+      this.data = res;
+    });
     console.log("OnInit");
   }
 
@@ -50,6 +58,20 @@ export class ExampleComponent implements OnChanges, OnInit,
 
   ngOnDestroy = () => {
     console.log("OnDestroy");
+  }
+
+  getData = (): Observable<any>  => {
+    const charsIds = [];
+    for (let i = 0; i < 20; i ++) {
+      charsIds.push(Math.round(Math.random() * 200));
+    }
+    const apiInput = {
+      url: 'https://rickandmortyapi.com/api/character/' + charsIds.join(","),
+      method: 'GET',
+      qParams: null,
+      payload: null,
+    };
+    return this.requestService.request(apiInput);
   }
 
 
