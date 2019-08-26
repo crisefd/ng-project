@@ -1,4 +1,40 @@
-p {
-  color: red;
-  font-size: 2em;
+$dark: rgb(51, 51, 51);
+$light: rgb(158, 158, 158);
+$orange: rgb(255, 152, 0);
+
+$card-title: rgb(245, 245, 245);
+$card-background: rgb(51, 51, 51);
+
+.main {
+  padding-left: 40%;
+  .main-title {
+    color: $dark;
+    font-size: 55px;
+    width: 50%;
+    text-align: center;
+  }
+
+  .legend {
+    text-align: center;
+    background: $dark;
+    margin-top: -40px;
+    color: $orange;
+    font-size: 20px;
+    width: 50%;
+  }
+  .card-item {
+    background: $card-background;
+    width: 450px;
+    .card-title {
+      color: $card-title;
+    }
+    .label {
+      color: $light;
+    }
+    .info {
+      color: $orange;
+    }
+  }
 }
+
+
