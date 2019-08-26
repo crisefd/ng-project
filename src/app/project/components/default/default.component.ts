@@ -20,6 +20,7 @@ export class DefaultComponent implements OnInit, OnChanges, OnDestroy {
   constructor(protected router: Router) { }
 
   ngOnChanges = () => {
+    debugger;
   }
 
   ngOnInit = () => {
@@ -28,6 +29,7 @@ export class DefaultComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnDestroy = () => {
+    debugger;
   }
 
 

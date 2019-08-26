@@ -30,10 +30,10 @@ export class ProjectModule {
         path: 'example',
         component: ExampleComponent,
       },
-      {
-        path: '**',
-        redirectTo: '',
-      }
+      // {
+      //   path: '**',
+      //   redirectTo: '',
+      // }
     ]
   }
 };
